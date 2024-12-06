@@ -4,6 +4,13 @@ import AdminDashboard from './pages/AdminDashboard'
 import EmployeeDashboard from './pages/EmployeeDashboard'
 import PrivateRoutes from "./utils/PrivateRoutes"
 import RoleBaseRoutes from "./utils/RoleBaseRoutes"
+import AdminSummary from "./components/dashboard/AdminSummary";
+import DepartmentList from './components/department/DepartmentList'
+import AddDepartment from './components/department/AddDepartment'
+import EditDepartment from './components/department/EditDepartment'
+import List from './components/employee/List'
+import AddEmployee from './components/employee/Add'
+
 function App() {
 
   return (
@@ -17,7 +24,16 @@ function App() {
               <AdminDashboard/>
             </RoleBaseRoutes>
           </PrivateRoutes>
-          }></Route>
+
+
+          }>
+            <Route index element={<AdminSummary/>}></Route>
+            <Route path='/admin-dashboard/departments' element={<DepartmentList/>}></Route>
+            <Route path='/admin-dashboard/add-department' element={<AddDepartment/>}></Route>
+            <Route path='/admin-dashboard/department/:id' element={<EditDepartment/>}></Route>
+            <Route path='/admin-dashboard/employees' element={<List/>}></Route>
+            <Route path='/admin-dashboard/add-employee' element={<AddEmployee/>}></Route>
+          </Route>
         <Route path="/employee-dashboard" element={<EmployeeDashboard/>}></Route>
         <Route path="/unauthorized" element={<div>Unauthorized Access</div>} />
       </Routes>
